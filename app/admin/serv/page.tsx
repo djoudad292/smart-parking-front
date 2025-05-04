@@ -87,6 +87,53 @@ useEffect(() => {
             </tr>
             <tr className=" text-center">
               <td className="p-3 ">
+                <ImEnter size={25} color="green" />
+              </td>
+              <td className="p-3">#229393</td>
+              <td className="p-3">Bekhti Djalal</td>
+              <td className="p-3">05/03/2025</td>
+              <td className="p-3">12:30</td>
+            </tr>
+            <tr className=" text-center">
+              <td className="p-3 ">
+                <ImEnter size={25} color="green" />
+              </td>
+              <td className="p-3">#229393</td>
+              <td className="p-3">Bekhti Djalal</td>
+              <td className="p-3">05/03/2025</td>
+              <td className="p-3">12:30</td>
+            </tr>
+            <tr className=" text-center">
+              <td className="p-3 ">
+                <ImEnter size={25} color="green" />
+              </td>
+              <td className="p-3">#229393</td>
+              <td className="p-3">Bekhti Djalal</td>
+              <td className="p-3">05/03/2025</td>
+              <td className="p-3">12:30</td>
+            </tr>
+            <tr className=" text-center">
+              <td className="p-3 ">
+                <ImEnter size={25} color="green" />
+              </td>
+              <td className="p-3">#229393</td>
+              <td className="p-3">Bekhti Djalal</td>
+              <td className="p-3">05/03/2025</td>
+              <td className="p-3">12:30</td>
+            </tr>
+            <tr className=" text-center">
+              <td className="p-3 ">
+                <ImEnter size={25} color="green" />
+              </td>
+              <td className="p-3">#229393</td>
+              <td className="p-3">Bekhti Djalal</td>
+              <td className="p-3">05/03/2025</td>
+              <td className="p-3">12:30</td>
+            </tr>
+           
+            
+            <tr className=" text-center">
+              <td className="p-3 ">
                 <ImExit size={25} color="red" />
               </td>
               <td className="p-3 ">#968948</td>

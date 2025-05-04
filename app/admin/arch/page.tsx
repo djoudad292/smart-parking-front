@@ -8,6 +8,7 @@ export default function Home(){
                         <div className="flex items-center gap-10">
                             <input type="number" placeholder="mounth ..." className="p-2 px-3 rounded-xl bg-slate-100" />
                             <input type="number" placeholder="year ..." className="p-2 px-3 rounded-xl bg-slate-100" />
+                            <button className="p-2 px-16 bg-slate-600 text-slate-50 font-bold rounded-xl">Filter</button>
                             </div>
                             <IoMdDownload color="white" size={30} className="ease-linear duration-200 hover:scale-150 cursor-pointer" />
                     </div>
