@@ -7,7 +7,30 @@ import { RiRfidLine } from "react-icons/ri";
 import { ImEnter , ImExit } from "react-icons/im";
 import { MdPhotoCameraFront } from "react-icons/md";
 
+interface E_s {
+  id: number;
+  name: string;
+  matricule: string;
+  date: string;
+  time: string;
+  type: string;
+}
 export default function Home() {
+  
+  const List: React.FC<E_s> = ({ id, name, matricule, date, time, type }) => {
+    return (
+      <tr className=" text-center">
+        <td className="p-3 ">
+          {type === "entry" ? <ImEnter size={25} color="green" /> : <ImExit size={25} color="red" />}
+        </td>
+        <td className="p-3">{matricule}</td>
+        <td className="p-3">{name}</td>
+        <td className="p-3">{date}</td>
+        <td className="p-3">{time}</td>
+      </tr>
+    );
+  }
+
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
   const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
   const [person , setPerson] = useState(0);
@@ -22,9 +45,25 @@ export default function Home() {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
   const [client, setclient] = useState(false);
+  const [e_s, setE_s] = useState<E_s[]>([]);
 useEffect(() => {
     setclient(true);
     }, []);
+
+useEffect(() => {
+  const socket = new WebSocket('ws://localhost:8080');
+
+  socket.onmessage = (e_s) => {
+  
+      const jsonData = JSON.parse(e_s.data);
+      setE_s(jsonData);
+  }
+
+  return () => {
+    socket.close();
+  };
+ 
+}, []);
   return (
 (client &&    <div className="w-full h-full grid grid-cols-12 grid-rows-12 px-5">
       <div className="col-start-1 col-end-13 row-start-2 text-slate-100 row-end-3 bg-blue-700 bg-opacity-50 rounded-xl flex items-center justify-around">
@@ -76,97 +115,11 @@ useEffect(() => {
       <div className=" col-start-7 col-end-12 row-start-5 row-end-12 flex justify-center items-center">
       <table className="w-full  rounded-lg">
           <tbody>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3">#229393</td>
-              <td className="p-3">Bekhti Djalal</td>
-              <td className="p-3">05/03/2025</td>
-              <td className="p-3">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3">#229393</td>
-              <td className="p-3">Bekhti Djalal</td>
-              <td className="p-3">05/03/2025</td>
-              <td className="p-3">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3">#229393</td>
-              <td className="p-3">Bekhti Djalal</td>
-              <td className="p-3">05/03/2025</td>
-              <td className="p-3">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3">#229393</td>
-              <td className="p-3">Bekhti Djalal</td>
-              <td className="p-3">05/03/2025</td>
-              <td className="p-3">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3">#229393</td>
-              <td className="p-3">Bekhti Djalal</td>
-              <td className="p-3">05/03/2025</td>
-              <td className="p-3">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3">#229393</td>
-              <td className="p-3">Bekhti Djalal</td>
-              <td className="p-3">05/03/2025</td>
-              <td className="p-3">12:30</td>
-            </tr>
-           
+          {e_s.map((e_s: E_s) => (
+  <List key={e_s.id} {...e_s} />
+))}
             
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImExit size={25} color="red" />
-              </td>
-              <td className="p-3 ">#968948</td>
-              <td className="p-3 ">belkacem abdelnour</td>
-              <td className="p-3 ">04/04/2025</td>
-              <td className="p-3 ">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImExit size={25} color="red" />
-              </td>
-              <td className="p-3 ">#968948</td>
-              <td className="p-3 ">belkacem abdelnour</td>
-              <td className="p-3 ">04/04/2025</td>
-              <td className="p-3 ">12:30</td>
-            </tr>
-            <tr className=" text-center">
-              <td className="p-3 ">
-                <ImEnter size={25} color="green" />
-              </td>
-              <td className="p-3 ">#968948</td>
-              <td className="p-3 ">belkacem abdelnour</td>
-              <td className="p-3 ">04/04/2025</td>
-              <td className="p-3 ">12:30</td>
-            </tr>   <tr className=" text-center">
-              <td className="p-3 ">
-                <ImExit size={25} color="red" />
-              </td>
-              <td className="p-3 ">#968948</td>
-              <td className="p-3 ">belkacem abdelnour</td>
-              <td className="p-3 ">04/04/2025</td>
-              <td className="p-3 ">12:30</td>
-            </tr>
+
           </tbody>
         </table>
         
